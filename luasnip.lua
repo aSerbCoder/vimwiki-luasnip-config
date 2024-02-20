@@ -15,51 +15,51 @@ return {
         local rep = extras.rep
 
         local getPath = function()
-          -- Get the current file path
+          
           local current_file_path = vim.fn.expand("%:p")
 
-          -- Calculate the parent path (directory one level above)
+          
           local parent_path = vim.fn.fnamemodify(current_file_path, ":h:h")
 
-          -- Return the parent path as a string
+          
           return parent_path
         end
 
         local makePath = function()
           local current_file_path = vim.fn.expand("%:p")
 
-          -- Get the current working directory
+          
           local current_working_directory = vim.fn.getcwd()
 
-          -- Calculate the relative path
+          
           local relative_path = vim.fn.fnamemodify(current_file_path, ":p:h")
           relative_path =
             vim.fn.substitute(relative_path, "^" .. vim.fn.escape(current_working_directory, "/\\") .. "/", "", "")
 
-          -- Return the relative path as a string
+          
           return relative_path
         end
 
         local addDirect = function()
-          -- Get the current file path
+          
           local current_file_path = vim.fn.expand("%:p")
 
-          -- Set the base path prefix to /~/Documents/mywebsite/src/vimwiki/
-          local base_path_prefix = "/Users/stefanjakovljevic/Documents/mywebsite/public/vimwiki/"
+          
+          local base_path_prefix = "/Users/<SET YOUR BASE PATH!!!>"
 
-          -- Check if the current file path starts with the base path prefix
+          
           if vim.fn.stridx(current_file_path, base_path_prefix) == 0 then
-            -- Remove the base path prefix from the current file path
+            
             local relative_path_without_base = vim.fn.substitute(current_file_path, "^" .. base_path_prefix, "", "")
 
-            -- Get the directory part without the file name
+            
             local directory_only = vim.fn.fnamemodify(relative_path_without_base, ":h")
 
-            -- Return the relative directory path with a leading /
+            
             return "/" .. directory_only
           end
 
-          -- If the current file path does not start with the base path prefix, return the full path
+          
           return "ERROR"
         end
 
