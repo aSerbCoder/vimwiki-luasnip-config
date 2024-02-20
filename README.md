@@ -4,3 +4,5 @@
 
 IF YOU ARE GOING TO COPY AND PASTE, MAKE SURE YOU CHANGE THE LOCATION OF THE HOME
 DIRECTORY IN THE luasnip.lua FILE!
+
+As of now my VimNotes project is still in early development. 
